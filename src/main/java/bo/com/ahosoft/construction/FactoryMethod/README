@@ -1,0 +1,20 @@
+El patrón Factory Method
+Descripción
+El objetivo del patrón Factory Method es proveer un método abstracto de creación de un
+objeto delegando en las subclases concretas su creación efectiva.
+Ejemplo
+Vamos a centrarnos en los clientes y sus pedidos. La clase Cliente implementa el
+método creaPedido que debe crear el pedido. Ciertos clientes solicitan un vehículo
+pagando al contado y otros clientes utilizan un crédito. En función de la naturaleza del
+cliente, el método creaPedido debe crear una instancia de la clase PedidoContado o una
+instancia de la clase PedidoCrédito. Para realizar estas alternativas, el método
+creaPedido es abstracto. Ambos tipos de cliente se distinguen mediante dos subclases
+concretas de la clase abstracta Cliente:
+
+
+La clase concreta ClienteContado cuyo método creaPedido crea una instancia de
+la clase PedidoContado.
+La clase concreta ClienteCrédito cuyo método creaPedido crea una instancia de
+la clase PedidoCrédito.
+Tal diseño está basado en el patrón Factory Method, el método creaPedido es el método
+de fabricación. El ejemplo se detalla en la figura 6.1.

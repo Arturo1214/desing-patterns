@@ -1,0 +1,31 @@
+/desarrollo/source/*/target/**
+
+# IDEA metadata and output dirs
+*.iml
+*.ipr
+*.iws
+*.log
+*.war
+.idea
+out
+.fuse*
+
+# Eclipse
+.classpath
+.factorypath
+.project
+.settings
+.metadata
+RemoteSystemsTempFiles
+
+# NetBeans
+nbactions.xml
+nb-configuration.xml
+profiles.xml
+*.class
+
+.DS_Store
+
+#Ingore target project
+/target/
+

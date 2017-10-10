@@ -1,0 +1,35 @@
+El patrón Decorator
+Descripción
+El objetivo del patrón Decorator es agregar dinámicamente funcionalidades
+suplementarias a un objeto. Esta agregación de funcionalidades no modifica la interfaz
+del objeto y es transparente de cara a los clientes.
+El patrón Decorator constituye una alternativa respecto a la creación de una subclase
+para enriquecer el objeto.
+Ejemplo
+El sistema de venta de vehículos dispone de una clase VistaCatálogo que muestra, bajo
+el formato de un catálogo electrónico, los vehículos disponibles en una página web.
+Queremos, a continuación, visualizar datos suplementarios para los vehículos "de alta
+gama", a saber la información técnica ligada al modelo. Para agregar esta funcionalidad,
+podemos crear una subclase de visualización específica para los vehículos "de alta
+gama". Ahora, queremos mostrar el logotipo de la marca en los vehículos "de gamas
+media y alta". Conviene crear una nueva subclase para estos vehículos, súperclase de la
+clase de vehículos "de alta gama", lo cual se vuelve rápidamente complejo.
+Es fácil darse cuenta de que la herencia no está adaptada a lo que se demanda por dos
+motivos:
+
+
+La herencia es una herramienta demasiado potente para agregar esta
+funcionalidad.
+La herencia es un mecanismo estático.
+El patrón Decorator proporciona otro enfoque que consiste en agregar un nuevo objeto
+llamado decorador que se sustituye por el objeto inicial y que lo referencia. Este
+decorador posee la misma interfaz, lo cual vuelve a la sustitución transparente de cara a
+los clientes. En nuestro caso, el método visualiza lo intercepta el decorador que solicita
+al objeto inicial su visualización y a continuación la enriquece con información
+complementaria.
+La figura 13.1 ilustra el uso del patrón Decorator para enriquecer la visualización de
+vehículos. La interfaz ComponenteGráficoVehículo constituye la interfaz común a la
+clase VistaVehículo, que queremos enriquecer, y a la clase abstracta Decorador, interfaz
+constituida únicamente por el método visualiza.
+La clase Decorador posee una referencia hacia un componente gráfico. Esta referencia
+la utiliza el método visualiza que delega la visualización en este componente.

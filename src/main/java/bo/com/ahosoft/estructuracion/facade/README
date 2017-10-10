@@ -1,0 +1,40 @@
+El patrón Facade
+Descripción
+El objetivo del patrón Facade es agrupar las interfaces de un conjunto de objetos en una
+interfaz unificada volviendo a este conjunto más fácil de usar por parte de un cliente.
+El patrón Facade encapsula la interfaz de cada objeto considerada como interfaz de bajo
+nivel en una interfaz única de nivel más elevado. La construcción de la interfaz
+unificada puede necesitar implementar métodos destinados a componer las interfaces de
+bajo nivel.
+Ejemplo
+Queremos ofrecer la posibilidad de acceder al sistema de venta de vehículos como
+servicio web. El sistema está arquitecturizado bajo la forma de un conjunto de
+componentes que poseen su propia interfaz como:
+
+
+
+El componente Catálogo.
+El componente GestiónDocumento.
+El componente RecogidaVehículo.
+Es posible dar acceso al conjunto de la interfaz de estos componentes a los clientes del
+servicio web, aunque esta posibilidad presenta dos inconvenientes principales:
+
+
+Algunas funcionalidades no las utilizan los clientes del servicio web, como por
+ejemplo las funcionalidades de visualización del catálogo.
+La arquitectura interna del sistema responde a las exigencias de modularidad y
+evolución que no forman parte de las necesidades de los clientes del servicio
+web, para los que estas exigencias suponen una complejidad inútil.
+El patrón Facade resuelve este problema proporcionando una interfaz unificada más
+sencilla y con un nivel de abstracción más elevado. Una clase se encarga de
+implementar esta interfaz unificada utilizando los componentes del sistema.
+Esta solución se ilustra en la figura 14.1. La clase WebServiceAuto ofrece una interfaz a
+los clientes del servicio web. Esta clase y su interfaz constituyen una fachada de cara a
+los clientes.
+La interfaz de la clase WebServiceAuto está constituida por el método
+buscaVehículos(precioMedio, desviaciónMax) cuyo código consiste en invocar al
+método buscaVehículos(precioMin, precioMax) del catálogo adaptando el valor de los
+argumentos de este método en función del precio medio y de la desviación máxima.
+Conviene observar que si bien la idea del patrón es construir una interfaz de más alto
+nivel de abstracción, nada nos impide proporcionar en la fachada accesos directos a
+ciertos métodos de los componentes del sistema.

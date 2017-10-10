@@ -1,0 +1,23 @@
+El patrón Singleton
+Descripción
+El patrón Singleton tiene como objetivo asegurar que una clase sólo posee una instancia
+y proporcionar un método de clase único que devuelva esta instancia.
+En ciertos casos es útil gestionar clases que posean una única instancia. En el marco de
+los patrones de construcción, podemos citar el caso de una fábrica de productos (patrón
+Abstract Factory) del que sólo es necesario crear una instancia.
+Ejemplo
+En el sistema de venta online de vehículos, debemos gestionar clases que poseen una
+sola instancia.
+El sistema de documentación que debe entregarse al cliente tras la compra de un
+vehículo (como el certificado de cesión, la solicitud de matriculación y la orden de
+pedido) utiliza la clase DocumentaciónEnBlanco que sólo posee una instancia. Esta
+instancia referencia todos los documentos necesarios para el cliente. Esta instancia única
+se llama la documentación en blanco, pues los documentos a los que hace referencia
+están todos en blanco. El uso completo de la clase DocumentaciónEnBlanco se explica
+en el capítulo dedicado al patrón Prototype.
+La figura 8.1 ilustra el uso del patrón Singleton para la clase DocumentaciónEnBlanco.
+El atributo de clase instance contiene o bien null o bien la única instancia de la clase
+DocumentaciónEnBlanco. El método de clase Instance reenvía esta instancia única
+devolviendo el valor del atributo instance. Si este atributo vale null, se inicializa
+previamente mediante la creación de la instancia única.
+Figura 8.1 - El patrón Singleton aplicado a la clase DocumentaciónEnBlanco

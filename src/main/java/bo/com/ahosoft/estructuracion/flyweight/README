@@ -1,0 +1,19 @@
+El patrón Flyweight
+Descripción
+El objetivo del patrón Flyweight es compartir de forma eficaz un conjunto de objetos de
+granularidad fina.
+Ejemplo
+En el sistema de venta de vehículos, es necesario administrar las opciones que el
+comprador puede elegir cuando está comprando un nuevo vehículo.
+Estas opciones están descritas por la clase OpciónVehículo que contiene varios atributos
+tales como el nombre, la explicación, un logotipo, el precio estándar, las
+incompatibilidades con otras opciones, con ciertos modelos, etc.
+Por cada vehículo solicitado, es posible asociar una nueva instancia de esta clase. No
+obstante a menudo existe un gran número de opciones para cada vehículo solicitado, lo
+cual obliga al sistema a gestionar un conjunto enorme de objetos de pequeño tamaño (de
+granularidad fina). Este enfoque presenta sin embargo la ventaja de poder almacenar a
+nivel de opción la información específica a sí misma y al vehículo, como por ejemplo el
+precio de venta de la opción que puede diferir de un vehículo a otro.
+Esta solución se presenta con un pequeño ejemplo en la figura 15.1 y es fácil darse
+cuenta de que es necesario gestionar un gran número de instancias de OpciónVehículo
+mientras que entre ellas contienen datos idénticos.

@@ -1,0 +1,23 @@
+El patrón Adapter
+Descripción
+El objetivo del patrón Adapter es convertir la interfaz de una clase existente en la
+interfaz esperada por los clientes también existentes de modo que puedan trabajar de
+manera conjunta. Se trata de conferir a una clase existente una nueva interfaz para
+responder a las necesidades de los clientes
+Ejemplo
+El servidor web del sistema de venta de vehículos crea y administra los documentos
+destinados a los clientes. La interfaz Documento se ha definido para realizar esta
+gestión. La figura 10.1 muestra su representación UML así como los tres métodos
+setContenido, dibuja e imprime. Se ha realizado una primera clase de implementación
+de esta interfaz: la clase DocumentoHtml que implementa estos tres métodos. Los
+objetos clientes de esta interfaz y esta clase cliente ya se han diseñado.
+Por otro lado, la agregación de documentos PDF supone un problema, pues se trata de
+documentos más complejos de construir y de administrar que los documentos HTML.
+Para ello se ha escogido un producto del mercado, aunque su interfaz no se corresponde
+con la interfaz Documento. La figura 10.1 muestra el componente ComponentePdf cuya
+interfaz incluye más métodos y la nomenclatura es bien diferente (con el prefijo pdf).
+El patrón Adapter proporciona una solución que consiste en crear la clase
+DocumentoPdf que implemente la interfaz Documento y posea una asociación con
+ComponentePdf. La implementación de los tres métodos de la interfaz Documento
+consiste en delegar correctamente las llamadas al componente PDF. Esta solución se
+muestra en la figura 10.1, el código de los métodos se detalla con ayuda de notas.

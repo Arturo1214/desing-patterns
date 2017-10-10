@@ -1,0 +1,43 @@
+El patrón Bridge
+Descripción
+El objetivo del patrón Bridge es separar el aspecto de implementación de un objeto de
+su aspecto de representación y de interfaz.
+De este modo, por un lado la implementación puede encapsularse por completo y por
+otro lado la implementación y la representación pueden evolucionar de manera
+independiente y sin que ninguna suponga restricción alguna sobre la otra.
+Ejemplo
+Para realizar la solicitud de matriculación de un vehículo de ocasión, conviene precisar
+sobre esta solicitud cierta información importante como el número de placa existente. El
+sistema muestra un formulario para solicitar esta información.
+Existen dos implementaciones de los formularios:
+
+
+Formularios HTML;
+Formularios basados en un applet Java.
+Por tanto es posible introducir una clase abstracta FormularioMatriculación y dos
+subclases concretas FormularioMatriculaciónHtml y FormularioMatriculaciónApplet.
+En una primera etapa, las solicitudes de matriculación sólo afectan a España. A
+continuación, se hace necesario introducir una nueva subclase de
+FormularioMatriculación correspondiente a las solicitudes de matriculación de Portugal,
+subclase llamada FormularioMatriculaciónPortugal. Esta subclase debe a su vez ser
+abstracta y tener dos subclases concretas por cada implementación. La figura 11.1
+muestra el diagrama de clases correspondiente.
+Figura 11.1 - Jerarquía de formularios integrando las subclases de implementación
+https://www.facebook.com/pages/Planeta-Java/445981695433321Este diagrama pone de manifiesto dos problemas:
+
+
+La jerarquía mezcla al mismo nivel subclases de implementación y una
+subclase de representación: FormularioMatriculaciónPortugal. Además para
+cada representación es preciso introducir dos subclases de implementación, lo
+cual conduce rápidamente a una jerarquía muy compleja.
+Los clientes son dependientes de la implementación. En efecto, deben
+interactuar con las clases concretas de implementación.
+La solución del patrón Bridge consiste en separar aquellos aspectos de representación de
+los de implementación y en crear dos jerarquías de clases tal y como ilustra la figura
+11.2. Las instancias de la clase FormularioMatriculación mantienen el enlace
+implementación hacia una instancia que responde a la interfaz FormularioImpl.
+La implementación de los métodos de FormularioMatriculación está basada en el uso de
+los métodos descritos en FormularioImpl.
+En cuanto a la clase FormularioMatriculación, ahora es abstracta y existe una subclase
+concreta para cada país (FormularioMatriculaciónEspaña y
+FormularioMatriculaciónPortugal).

@@ -1,0 +1,34 @@
+El patrón Composite
+Descripción
+El objetivo del patrón Composite es ofrecer un marco de diseño de una composición de
+objetos de profundidad variable, diseño que estará basado en un árbol.
+Por otro lado, esta composición está encapsulada respecto a los clientes de los objetos
+que pueden interactuar sin tener que conocer la profundidad de la composición.
+Ejemplo
+En nuestro sistema de venta de vehículos, queremos representar las empresas cliente, en
+especial para conocer el número de vehículos de los que disponen y proporcionarles
+ofertas de mantenimiento para su parque de vehículos.
+Las empresas que posean filiales solicitan ofertas de mantenimiento que tengan en
+cuenta el parque de vehículos de sus filiales.
+Una solución inmediata consiste en procesar de forma diferente las empresas sin filiales
+y las que posean filiales. No obstante esta diferencia en el procesado entre ambos tipos
+de empresa vuelve a la aplicación más compleja y dependiente de la composición
+interna de las empresas cliente.
+El patrón Composite resuelve este problema unificando ambos tipos de empresa y
+utilizando la composición recursiva. Esta composición recursiva es necesaria puesto que
+una empresa puede tener filiales que posean, ellas mismas, otras filiales. Se trata de una
+composición en árbol (tomamos la hipótesis de la ausencia de una filial común entre dos
+empresas) tal y como se ilustra en la figura 12.1 donde las empresas madre se sitúan
+sobre sus filiales.
+Figura 12.1 - Árbol de empresas madres y de sus filiales
+La figura 12.2 presenta el diagrama de clases correspondiente. La clase abstracta
+Empresa contiene la interfaz destinada a los clientes. Posee dos subclases concretas, a
+saber EmpresaSinFilial y EmpresaMadre, esta última guarda una relación de agregación
+con la clase Empresa representando los enlaces con sus filiales.
+Figura 12.2 - El patrón Composite aplicado a la representación de empresas y sus
+filiales
+La clase Empresa posee tres métodos públicos de los cuales sólo uno es concreto y los
+otros dos son abstractos. El método concreto es el método agregaVehículo que no
+depende de la composición en filiales de la empresa. En cuanto a los otros dos métodos,
+se implementan en las subclases concretas (agregaFilial sólo tiene una implementación
+vacía en EmpresaSinFilial y por tanto no se representa en el diagrama de clases).

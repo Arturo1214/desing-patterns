@@ -1,0 +1,37 @@
+El patrón Prototype
+Descripción
+El objetivo de este patrón es la creación de nuevos objetos mediante duplicación de
+objetos existentes llamados prototipos que disponen de la capacidad de clonación.
+Ejemplo
+Durante la compra de un vehículo, un cliente debe recibir una documentación
+compuesta por un número concreto de documentos tales como el certificado de cesión,
+la solicitud de matriculación o incluso la orden de pedido. Existen otros tipos de
+documentos que pueden incluirse o excluirse a esta documentación en función de las
+necesidades de gestión o de cambios de reglamentación. Introducimos una clase
+Documentación cuyas instancias son documentaciones compuestas por diversos
+documentos obligatorios. Para cada tipo de documento, incluimos su clase
+correspondiente.
+A continuación creamos un modelo de documentación que consiste en una instancia
+particular de la clase Documentación y que contiene los distintos documentos
+necesarios, documentos en blanco. Llamamos a esta documentación "documentación en
+blanco". De este modo definimos a nivel de las instancias, y no a nivel de las clases, el
+contenido preciso de la documentación que debe recibir un cliente. Incluir o excluir un
+documento en la documentación en blanco no supone ninguna modificación en su clase.
+Una vez presentada la documentación en blanco, recurrimos al proceso de clonación
+para crear las nuevas documentaciones. Cada nueva documentación se crea duplicando
+todos los documentos de la documentación en blanco.
+Esta técnica basada en objetos que poseen la capacidad de clonación utiliza el patrón
+Prototype, y los documentos constituyen los distintos prototipos.
+La figura 7.1 ilustra este uso. La clase Documento es una clase abstracta conocida por la
+clase Documentación. Sus subclases corresponden a los distintos tipos de documento.
+Incluyen el método duplica que permite clonar una instancia existente para obtener una
+nueva.
+La clase Documentación también es abstracta. Posee dos subclases concretas:
+
+
+La clase DocumentaciónEnBlanco, que posee una única instancia que contiene
+todos los documentos necesarios (documentos en blanco). Esta instancia se
+manipula mediante los métodos incluye y excluye.
+La clase DocumentaciónCliente, cuyo conjunto de documentos se crea
+solicitando a la única instancia de la clase DocumentaciónEnBlanco la lista de
+documentos en blanco y agregándolos uno a uno tras haberlos clonado.
